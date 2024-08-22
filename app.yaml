@@ -1,0 +1,17 @@
+runtime: custom
+env: flex
+
+# Optional: Set the number of instances
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+
+# Optional: Set the resources your application will use
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+# Optional: Set environment variables
+env_variables:
+  RUST_LOG: "debug"
