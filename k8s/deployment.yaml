@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appengine-rust
+  labels:
+    app: appengine-rust
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appengine-rust
+  template:
+    metadata:
+      labels:
+        app: appengine-rust
+    spec:
+      containers:
+      - name: appengine-rust
+        image: appengine-rust:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: RUST_LOG
+          valueFrom:
+            configMapKeyRef:
+              name: appengine-rust-config
+              key: RUST_LOG
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
