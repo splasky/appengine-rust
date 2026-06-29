@@ -1,0 +1,10 @@
+/target
+.git
+.gitignore
+*.md
+Docker/
+k8s/
+cloudflare/
+Vercel/
+gcp-appengine/
+.opencode/
