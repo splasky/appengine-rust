@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md", ".opencode/skills/appengine-rust/SKILL.md"],
+  "agent": {
+    "qwen3-coder": {
+      "model": "ollama/qwen3-coder:latest",
+      "mode": "subagent",
+      "description": "Rust code generator. Writes Rust code, commits, and creates GitHub PRs.",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "git *": "allow",
+          "gh *": "allow",
+          "cargo *": "allow",
+          "rustup *": "allow",
+          "*": "ask"
+        },
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "websearch": "allow",
+        "webfetch": "allow",
+        "task": "allow",
+        "skill": "allow"
+      }
+    }
+  }
+}
