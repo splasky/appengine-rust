@@ -1,3 +1,6 @@
+// Copyright 2026 HY Chang
+// SPDX-License-Identifier: Apache-2.0
+
 use actix_web::{web, App, HttpServer, HttpResponse, middleware::Logger};
 use serde::Serialize;
 use std::env;
