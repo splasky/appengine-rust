@@ -1,3 +1,6 @@
+// Copyright 2026 HY Chang
+// SPDX-License-Identifier: Apache-2.0
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);

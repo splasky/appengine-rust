@@ -1,3 +1,6 @@
+# Copyright 2026 HY Chang
+# SPDX-License-Identifier: Apache-2.0
+
 FROM rust:latest AS builder
 
 RUN apt-get update && apt-get install -y libssl-dev pkg-config

@@ -1,3 +1,6 @@
+# Copyright 2026 HY Chang
+# SPDX-License-Identifier: Apache-2.0
+
 name = "appengine-rust"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
