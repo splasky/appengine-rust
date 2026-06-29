@@ -20,7 +20,7 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@nightly
         with:
-          components: clippy, rustfmt
+          components: clippy, rustfmt, llvm-tools-preview
 
       - uses: actions/cache@v4
         with:
@@ -31,8 +31,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-
 
-      - name: Install cargo-llvm-cov
-        run: cargo install cargo-llvm-cov
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov
 
       - run: cargo build --verbose
 
