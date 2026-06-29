@@ -1,0 +1,6 @@
+name = "appengine-rust"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[env.production]
+vars = { BACKEND_URL = "https://your-app.example.com" }
