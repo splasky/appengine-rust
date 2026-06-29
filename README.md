@@ -108,5 +108,4 @@ git push origin v0.1.0
 | `RUST_LOG` | (unset) | Log level (e.g., `info`, `debug`) |
 
 ## License
-
-MIT
+Apache 2.0
