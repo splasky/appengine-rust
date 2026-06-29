@@ -1,0 +1,21 @@
+{
+  "name": "appengine-rust",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "public" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://your-app.example.com/$1"
+    },
+    {
+      "src": "/health",
+      "dest": "https://your-app.example.com/health"
+    }
+  ]
+}
