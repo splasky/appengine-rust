@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 name = "appengine-rust"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat"]
 
 [env.production]
-vars = { BACKEND_URL = "https://your-app.example.com" }
+vars = { RUST_LOG = "info" }
