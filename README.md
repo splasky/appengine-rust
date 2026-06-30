@@ -52,22 +52,29 @@ kubectl apply -f k8s/
 
 Services are exposed on port 80 via ClusterIP. Update `k8s/ingress.yaml` with your domain.
 
-### Cloudflare Workers
+### Cloudflare Workers (Rust → WASM)
 
 ```bash
 cd cloudflare
-npm install
+wasm-pack build --target web --release
 npx wrangler deploy
 ```
 
-### Vercel
+Or using npm scripts:
+
+```bash
+cd cloudflare
+npm run deploy
+```
+
+### Vercel (Rust native)
 
 ```bash
 cd Vercel
 vercel deploy
 ```
 
-The Vercel config proxies `/api/*` and `/health` to your backend URL.
+The Vercel config uses the `@vercel/rust` builder to compile `src/main.rs` (actix-web server) to a native binary. Routes are handled directly by the server — no reverse proxy needed.
 
 ## CI/CD
 
@@ -94,8 +101,8 @@ git push origin v0.1.0
 ├── Docker/                  # Docker Compose
 ├── gcp-appengine/           # GCP App Engine (flex) config
 ├── k8s/                     # Kubernetes manifests
-├── cloudflare/              # Cloudflare Workers config
-├── Vercel/                  # Vercel serverless config
+├── cloudflare/              # Cloudflare Workers — Rust WASM crate
+├── Vercel/                  # Vercel — @vercel/rust native binary
 └── .github/workflows/       # CI/CD pipelines
 ```
 
